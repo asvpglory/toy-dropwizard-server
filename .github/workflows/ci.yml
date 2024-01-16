@@ -6,25 +6,25 @@ on:
 			main
 
 jobs:
-	build-and-test-please:
+	build-and-test:
 		runs-on:ubuntu-latest
 
-		steps:
-			- uses: actions/checkout@v1
+	steps:
+		- uses: actions/checkout@v1
 
-			- name: Install Java
-				uses: actions/setup-java@v1
-				with:
-					java-version: "11"
+		- name: Install Java
+			uses: actions/setup-java@v1
+			with:
+				java-version: "11"
+		
+		- name: Build with gradle
+			working-directory: .
+			run: |
+				chmod +x gradlew
+				./gradlew build -x test
 
-			- name: Build with gradle
-				working-directory: .
-				run: |
-					chmod +x gradlew
-					./gradlew build -x test
-
-			- name: Run tests
-				working-directory: .
-				run: |
-					chmod +x gradlew
-					./gradlew test
+		- name: Run tests
+			working-directory: .
+			run: |
+				chmod +x gradlew
+				./gradlew test
