@@ -51,6 +51,6 @@ jobs:
            port: ${{ secrets.PORT }}
            key: ${{ secrets.KEY }}
            script: |
-             cd~/prod
+             cd ~/prod
              docker-compose down && docker-compose up --build -d
      
