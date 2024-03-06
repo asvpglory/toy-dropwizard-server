@@ -6,17 +6,7 @@ jobs:
    deploy:
      runs-on: self-hosted
      steps:
-       - uses: actions/checkout@v1
-       - name: Copy repo to cloud
-         uses: appleboy/scp-action@master
-         with:
-           host: ${{ secrets.HOST }}
-           username: ${{ secrets.USERNAME }}
-           port: ${{ secrets.PORT }}
-           key: ${{ secrets.KEY }}
-           source: "./"
-           target: "~/prod"
-       - name: Create revert.txt
+       - name: Revert repository
          uses: appleboy/ssh-action@master
          with: 
            host: ${{ secrets.HOST }}
