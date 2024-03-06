@@ -43,9 +43,3 @@ run {
     args = ['server', 'hello-world.yml']
 }
 
-spotbugsMain {
-    reports {
-        html.required=true;
-        xml.required=true;
-    }
-}
